@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@test/*": ["packages/*"],
+      "@share/*": ["packages/share/*"],
+      "@monitor/*": ["packages/monitor/src/*"]
+    }
+  }
+}

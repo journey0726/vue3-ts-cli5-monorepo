@@ -1,0 +1,11 @@
+{
+  "name": "@test/monitor",
+  "version": "0.1.0",
+  "private": true,
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ]
+}

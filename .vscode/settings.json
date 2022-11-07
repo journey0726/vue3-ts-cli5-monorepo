@@ -1,0 +1,58 @@
+{
+  "diffEditor.ignoreTrimWhitespace": false,
+  "markdown-preview-enhanced.previewTheme": "one-dark.css",
+  "editor.suggestSelection": "first",
+  "explorer.compactFolders": false,
+
+  "editor.tabSize": 2,
+  "typescript.disableAutomaticTypeAcquisition": true,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[markdown]": {
+    "editor.formatOnSave": false
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript|react]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript|react]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[less]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "workbench.startupEditor": "none",
+  "terminal.integrated.allowMnemonics": true,
+  "github.copilot.enable": {
+    "*": true,
+    "yaml": false,
+    "plaintext": false,
+    "markdown": true,
+    "javascript": true
+  },
+  "editor.inlineSuggest.enabled": true,
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.iconTheme": "vscode-icons",
+  "svg.preview.mode": "svg",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true
+}
