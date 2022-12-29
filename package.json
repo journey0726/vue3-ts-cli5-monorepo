@@ -8,7 +8,8 @@
   "scripts": {
     "dev:monitor": "cross-env TARGETMODULE=monitor dotenv -e ./packages/monitor/.env.dev vue-cli-service serve",
     "mock:monitor": "cross-env TARGETMODULE=monitor cross-env NODE_ENV=mock dotenv -e ./packages/monitor/.env.mock vue-cli-service serve",
-    "build": "node ./scripts/build.mjs --module=monitor"
+    "build": "node ./scripts/batchBuild.mjs",
+    "delete": "node ./scripts/batchRemoveDist.mjs"
   },
   "dependencies": {
     "@ant-design/icons-vue": "^6.1.0",
@@ -36,6 +37,7 @@
     "@vue/cli-plugin-typescript": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
     "copy-webpack-plugin": "^11.0.0",
+    "inquirer": "8",
     "less": "^4.1.3",
     "less-loader": "5",
     "ora": "^6.1.2",

@@ -53,11 +53,7 @@
 
 ## 怎样打包项目
 
-- 在根目录的 `package.json` 中，在 `script` 项中添加一条命令：
-  ```
-   node ./scripts/build.mjs --module=xxx1,xxx2
-  ```
-  该命令中 xxx1 和 xxx2 的位置 替换成需要运行项目的文件夹名称，多个项目之间以 **逗号** 分隔，这样会依次串行的进行打包。
+  无需额外配置 `yarn build`
 
 ## 换肤
 
