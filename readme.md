@@ -16,15 +16,17 @@
 
 ## 环境变量
 
-- 在 `packages` 下面项目的根目录中创建 `.env.dev`， `.env.prod`，`.env.mock` 三个文件，分别代表开发环境，生产环境和模拟环境，`process.env.NODE_ENV` 的值分别为 `development`，`production`, `mock`, 你能在项目中使用这些值来区分不同的环境。
-- 注意：只有 `NODE_ENV`，`BASE_URL` 和以 `VUE_APP_` 开头的变量才能注入到客户端的代码中，详情见 Vue CLI 官网。
+- 在 `packages` 下面项目的根目录中创建 `.env.dev`， `.env.prod`，`.env.mock` 三个文件，分别代表开发环境，生产环境和模拟环境所使用的环境变量。
+- 注意：
+      - 只有 `NODE_ENV`，`BASE_URL` 和以 `VUE_APP_` 开头的变量才能注入到客户端的代码中，详情见 Vue CLI 官网。
+      - 在打包成 `electron` 时，请不要乱修改 `process.env.NODE_ENV` ，`process.env.NODE_ENV` 的值只能为 `development`，`production` 或者 `none`, 因为最终会映射到 `webpack` 的配置中。
 
 ## 新建一个模块
 
 1. 配置 `ts` 别名，在 `tsconfig.paths.json` 增加一条别名，例如：`@monitor/*`，请记住这个别名。
 2. 配置 `webpack` 别名，在 `vue.config.js` 中，找到 `chainWebpack` 项，在 `config.resolve.alias` 后面再添加刚刚记住的别名。
 3. 这样配置后，你能在本模块使用 `@monitor/*` 这样的别名。
-4. 由于采用了 `monorepo`，`packages` 目录下面的每一个项目都需要包含一个 `package.json`, 这边统一将 `name` 项改成 `@test/**`。注意：统一名称为 `@test/**` 后，你能在 `packages` 目录下的其他项目中，通过 `@test/**` 直接找到这个项目，方便使用其他项目中的组件和功能。
+4. 由于采用了 `monorepo`，`packages` 目录下面的每一个项目都需要包含一个 `package.json`, 这边统一将 `name` 项改成 `@gefei/**`。注意：统一名称为 `@gefei/**` 后，你能在 `packages` 目录下的其他项目中，通过 `@gefei/**` 直接找到这个项目，方便使用其他项目中的组件和功能。
 5. `packages` 下的 `share` 文件夹 用来存放在其他项目中都可能用到的组件或 hooks 等公共部分，为了方便，现已经配置 `@share` 别名，你能通过 `@share` 直接访问到 `share` 目录。
 6. 在 `share` 文件下更新了组件或hooks后，请同步更新 `readme.md`, 让大家知道有哪些东西能够公用。
 
@@ -43,24 +45,22 @@
    - 反向代理就配置这个 `VUE_APP_URL_PREFIX` 所指的变量。
 5. 这样我们就能区分 `dev` 环境和 `mock` 等环境了，具体用法请看项目代码。
 
-## 怎样运行项目
-
-- 在根目录的 `package.json` 中，在 `script` 项中添加一条命令：
-  ```
-   cross-env TARGETMODULE=*** dotenv -e ./packages/***/.env.dev vue-cli-service serve
-  ```
-  该命令中 *** 的位置 替换成需要运行项目的文件夹名称。注意区分不同的环境下使用的环境变量文件。
-
-## 怎样打包项目
-
-  无需额外配置 `yarn build`
+## 脚本
+- 总体上分为了 `web` 和 `electron` 两大块。
+  1. `dev`
+  2. `dev:electron`
+  3. `mock`
+  4. `mock:electron`
+  5. `build`
+  6. `build:electron`
+  7. `delete`: 对 `dist` 和 `dist-electron` 文件夹进行删除操作。
 
 ## 换肤
 
 - 所有项目的主题围绕着 `ant-design-vue` 的主题进行变化，`ant-design-vue` 提供了一系列的 `css变量`。
 - 你能在项目的 `style` 文件夹下面看到一个 `global.css` 文件， 这里面的变量同属于一个主题色，默认我们选择 `--ant-primary-color`，如果需要使用其他不同阶梯的颜色，自己酌情选择其他变量。
 - 使用方法：`var(--ant-primary-color, ***)`
-- 注意：由于这些 `css变量` 为 `ant-design-vue` 动态生成，并不能保证某个变量一定存在，因此 `var` 函数的第二个参数要给上，在第一个变量不存在，能够使用第二个颜色。
+- 注意：由于这些 `css变量` 为 `ant-design-vue` 动态生成，并不能保证某个变量一定存在，因此 `var` 函数的第二个参数要给上，在第一个变量不存在时，能够使用第二个颜色。
 
 ## 代码风格
 
@@ -73,3 +73,4 @@
 ## 更换插件
 
 - 切换到 `Vue3` 开发，需要将 `VScode` 中 `Vetur` 禁用掉，同时安装 `Volar`。
+

@@ -2,18 +2,25 @@
   "name": "monitor",
   "version": "0.1.0",
   "private": true,
+  "main": "background.js",
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
+    "dev": "node ./scripts/dev.mjs",
+    "dev:electron": "node ./scripts/dev_electron.mjs",
     "dev:monitor": "cross-env TARGETMODULE=monitor dotenv -e ./packages/monitor/.env.dev vue-cli-service serve",
-    "mock:monitor": "cross-env TARGETMODULE=monitor cross-env NODE_ENV=mock dotenv -e ./packages/monitor/.env.mock vue-cli-service serve",
+    "mock": "node ./scripts/mock.mjs",
+    "mock:electron": "node ./scripts/mock_electron.mjs",
     "build": "node ./scripts/batchBuild.mjs",
+    "build:electron": "node ./scripts/batchBuild_electron.mjs",
     "delete": "node ./scripts/batchRemoveDist.mjs"
   },
   "dependencies": {
     "@ant-design/icons-vue": "^6.1.0",
+    "@antv/hierarchy": "^0.6.8",
     "@antv/x6": "^1.34.5",
+    "@antv/x6-vue-shape": "^1.5.3",
     "@vueuse/core": "^9.3.1",
     "ant-design-vue": "^3.2.13",
     "axios": "^1.1.3",
@@ -21,6 +28,7 @@
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.3",
     "dotenv-cli": "^6.0.0",
+    "lodash": "^4.17.21",
     "mitt": "^3.0.0",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.23",
@@ -31,18 +39,24 @@
     "xe-utils": "^3.5.7"
   },
   "devDependencies": {
+    "@types/jquery": "^3.5.14",
+    "@types/jquery.nicescroll": "^3.7.2",
+    "@types/lodash": "^4.14.189",
     "@types/nprogress": "^0.2.0",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-router": "~5.0.0",
     "@vue/cli-plugin-typescript": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
     "copy-webpack-plugin": "^11.0.0",
+    "electron": "13.0.0",
+    "electron-builder": "22.2.0",
     "inquirer": "8",
     "less": "^4.1.3",
     "less-loader": "5",
     "ora": "^6.1.2",
     "style-resources-loader": "^1.5.0",
-    "typescript": "~4.5.5"
+    "typescript": "~4.5.5",
+    "vue-cli-plugin-electron-builder": "2.1.1"
   },
   "browserslist": [
     "> 1%",
