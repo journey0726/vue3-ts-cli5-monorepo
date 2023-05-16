@@ -13,6 +13,8 @@
    例如：
    - 你需要添加 `react` 到你的生成环境依赖中， `yarn add react -W `。
    - 需要添加 `typescript` 到你的开发环境依赖中， `yarn add typescript -WD `。
+ 注意：上述添加方法会将依赖安装到根路径下的 `package.json` 中去，如果想安装到子仓库中去，则需要执行 `yarn add workspace project1 add react`,
+         其中 project1 为子仓库的名字。
 
 ## 环境变量
 
